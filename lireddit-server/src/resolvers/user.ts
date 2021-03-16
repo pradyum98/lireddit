@@ -47,7 +47,7 @@ export class UserResolver {
   @Mutation(() => UserResponse)
   async register(
     @Arg("options") options: UsernamePasswordInput,
-    @Arg("id") id: number,
+    // @Arg("id") id: number,
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
     if(options.username.length <= 2){
@@ -75,7 +75,7 @@ export class UserResolver {
     const user = em.create(User, {
       username: options.username,
       password: hashedPassword,
-      id: id,
+      // id: id,
     });
     try{
       await em.persistAndFlush(user);
